@@ -1,9 +1,7 @@
-os: Windows Server 2012
-
 environment:
   matrix:
-  - PYTHON: "C:\\Python33\\python.exe"
-  - PYTHON: "C:\\Python34\\python.exe"
+  - PYTHON: C:\Python33\python.exe
+  - PYTHON: C:\Python34\python.exe
 
 test_script:
-  - %PYTHON% setup.py test
+- '%PYTHON% setup.py test'
