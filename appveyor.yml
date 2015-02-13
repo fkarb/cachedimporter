@@ -6,4 +6,4 @@ environment:
   - PYTHON: C:\Python34\python.exe
 
 test_script:
-  - %PYTHON% setup.py test
+  - cmd: %PYTHON% setup.py test
