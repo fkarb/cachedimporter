@@ -1,7 +1,18 @@
 environment:
   matrix:
-  - PYTHON: C:\Python33\python.exe
-  - PYTHON: C:\Python34\python.exe
+  - PYTHON: C:/Python33
+  - PYTHON: C:/Python34
+
+install:
+  - ps: (new-object net.webclient).DownloadFile('https://raw.github.com/pypa/pip/master/contrib/get-pip.py', 'C:/get-pip.py')
+  - "%PYTHON%/python.exe C:/get-pip.py"
+  - "%PYTHON%/Scripts/pip.exe install setuptools"
 
 test_script:
-- '%PYTHON% setup.py test'
+- '%PYTHON%/python.exe setup.py test'
+
+after_test:
+  - "%PYTHON%/python.exe setup.py bdist_wheel"
+
+artifacts:
+  - path: dist\*
